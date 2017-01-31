@@ -24,10 +24,10 @@ class Randomizer(object):
         return choice(self.items)
 
     def create_groups(self, group_size):
-        """Generate groups with random users.
+        """Generate tuples containing random items.
 
-        :size: Number of desired items per group.
-        :returns: List of selected item tuples with selection length.
+        :size: Number of desired items in each tuple.
+        :returns: List of groups as tuples.
         """
         self.group_size = group_size
         shuffle(self.items)
