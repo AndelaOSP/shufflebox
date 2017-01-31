@@ -3,32 +3,33 @@
 from random import shuffle, choice
 from itertools import izip_longest
 
+
 class Randomizer(object):
+    """This class creates groups using a random shuffle and
+    picks an item from a list of entities at random."""
 
-    """Randomizer creates groups of lists."""
-
-    def __init__(self, users_list, selection=1):
+    def __init__(self, items):
         """Initialize Randomizer.
 
         :selection: Number of desired users per group.
-        :users_list: List of all users ids.
+        :items: List of items to be manipulated.
         """
-        self.users_list = users_list
-        self.selection = selection
+        self.items = items
 
-    def random_user(self):
-        """Get single random user
+    def get_single(self):
+        """Get a single random entity from a list of items
 
-        :returns: A single random user (id).
+        :returns: A single item chosen at random.
         """
-        return choice(self.users_list)
+        return choice(self.items)
 
-    def generate_groups(self, selection):
+    def create_groups(self, group_size):
         """Generate groups with random users.
 
-        :selection: Number of desired users per group.
-        :returns: List of selected user tuples with selection length.
+        :size: Number of desired items per group.
+        :returns: List of selected item tuples with selection length.
         """
-        self.selection = selection
-        shuffle(self.users_list)
-        return list(izip_longest(*(iter(self.users_list),) * self.selection))
+        self.group_size = group_size
+        shuffle(self.items)
+
+        return list(izip_longest(*(iter(self.items),) * self.group_size))
