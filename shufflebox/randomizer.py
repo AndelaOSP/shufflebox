@@ -1,35 +1,33 @@
 #!/usr/bin/env python
-# -*- coding: iso-8859-15 -*-
 from random import shuffle, choice
 from itertools import izip_longest
 
-
 class Randomizer(object):
-    """This class creates groups using a random shuffle and
-    picks an item from a list of entities at random."""
+    """Provides functions to:
+        1. Create groups of specified length from a shuffled set of items.
+        2. Randomly pick a random item from a set of items."""
 
     def __init__(self, items):
         """Initialize Randomizer.
 
-        :selection: Number of desired users per group.
         :items: List of items to be manipulated.
         """
         self.items = items
 
-    def get_single(self):
-        """Get a single random entity from a list of items
+    def get_random(self):
+        """Get a single random item from a list of items
 
-        :returns: A single item chosen at random.
+        :returns: A single random item.
         """
         return choice(self.items)
 
-    def create_groups(self, group_size):
-        """Generate tuples containing random items.
+    def create_groups(self, n):
+        """Generate tuples containing random items of n size.
 
-        :size: Number of desired items in each tuple.
+        :n: Number of desired items in each tuple.
         :returns: List of groups as tuples.
         """
-        self.group_size = group_size
+        self.n = n
         shuffle(self.items)
 
-        return list(izip_longest(*(iter(self.items),) * self.group_size))
+        return list(izip_longest(*(iter(self.items),) * self.n))
