@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 from random import shuffle, choice
-from itertools import izip_longest
+from itertools import zip_longest
 
 class Randomizer(object):
     """Provides functions to:
@@ -30,4 +30,4 @@ class Randomizer(object):
         self.n = n
         shuffle(self.items)
 
-        return list(izip_longest(*(iter(self.items),) * self.n))
+        return list(zip_longest(*(iter(self.items),) * self.n))

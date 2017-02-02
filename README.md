@@ -45,7 +45,7 @@ Example
 from shufflebox import Randomizer
 
 # create the dataset
-items = range(90)
+items = list(range(90))
 
 rand = Randomizer(items)
 
