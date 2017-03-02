@@ -29,5 +29,6 @@ class Randomizer(object):
         """
         self.n = n
         shuffle(self.items)
+        groups = list(zip_longest(*(iter(self.items),) * self.n))
 
-        return list(zip_longest(*(iter(self.items),) * self.n))
+        return [list(x) for x in groups]
